@@ -1,0 +1,154 @@
+/* -----------------------------------------------------------
+   ANIMATIONS & EFFETS SPECIFIQUES (main.css)
+   ----------------------------------------------------------- */
+
+/* Effet de fondu au survol des liens de navigation */
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+/* --- PAGE CHAMBRES : Details & Badges --- */
+.room-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--section-alt);
+    color: var(--secondary);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+.room-features {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.room-features li {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.room-features li::before {
+    content: '✓';
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* --- PAGE SERVICES : Grille Iconographique --- */
+.service-card {
+    background: var(--white);
+    padding: 50px 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.service-card:hover p {
+    color: rgba(255,255,255,0.8);
+}
+
+/* --- PAGE GALERIE : Style Masonry --- */
+.gallery-container {
+    columns: 3 300px;
+    column-gap: 20px;
+}
+
+.gallery-container img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: var(--transition);
+    cursor: zoom-in;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-hover);
+}
+
+/* --- PAGE CONTACT : Map & Infos --- */
+.map-container {
+    width: 100%;
+    height: 450px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 8px solid var(--white);
+}
+
+.contact-info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-item i {
+    width: 50px;
+    height: 50px;
+    background: var(--section-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 1.2rem;
+}
+
+/* --- FOOTER : Newsletter Mini --- */
+.newsletter-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.newsletter-input input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    flex: 1;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 600px) {
+    .res-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}

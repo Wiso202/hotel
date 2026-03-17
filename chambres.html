@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Suites | Azure Oasis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Grille de luxe à 3 colonnes */
+        .rooms-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2px; /* Espacement minimal pour un look "Mosaïque" */
+            padding: 0;
+            background: #000;
+        }
+
+        .room-item {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .room-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Overlay permanent discret qui s'intensifie au survol */
+        .room-details {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: white;
+            transition: 0.5s;
+        }
+
+        .room-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .room-item:hover .room-details {
+            background: rgba(10, 35, 81, 0.6); /* Rappel de ton bleu Azure */
+        }
+
+        .room-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .room-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .room-price-tag {
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .room-action {
+            margin-top: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .room-item:hover .room-action {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .rooms-gallery { grid-template-columns: 1fr; }
+            .room-item { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AZURE<span>OASIS</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="chambres.html" class="active">Suites</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="reservation.html" class="btn-primary" style="border-radius: 50px;">Réserver</a>
+    </nav>
+
+    <header class="rooms-header" style="
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+    background-attachment: fixed; /* Effet Parallaxe pour plus de luxe */
+    margin-bottom: 2px;
+">
+    <div class="content animate__animated animate__fadeIn">
+        <span style="letter-spacing: 8px; text-transform: uppercase; font-size: 0.8rem; font-weight: 300; display: block; margin-bottom: 20px;">L'art de vivre</span>
+        <h1 style="font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; letter-spacing: -2px; line-height: 1;">Nos Suites <span style="color: var(--accent);">Privées</span></h1>
+        <p style="max-width: 600px; margin: 25px auto 0; font-size: 1.1rem; opacity: 0.9; font-weight: 300;">Découvrez un sanctuaire de silence et de lumière, conçu pour vos moments d'exception.</p>
+    </div>
+</header>
+    <main class="rooms-gallery">
+        
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Suite Horizon">
+            <div class="room-details">
+                <span class="room-category">Vue Mer</span>
+                <div class="room-title">Suite Horizon</div>
+                <div class="room-price-tag">À partir de 55.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=800&q=80" alt="Suite Indigo">
+            <div class="room-details">
+                <span class="room-category">Premium</span>
+                <div class="room-title">Suite Indigo</div>
+                <div class="room-price-tag">À partir de 75.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="Suite Azur">
+            <div class="room-details">
+                <span class="room-category">Minimaliste</span>
+                <div class="room-title">Suite Azur</div>
+                <div class="room-price-tag">À partir de 40.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Suite Royale">
+            <div class="room-details">
+                <span class="room-category">Luxe Absolu</span>
+                <div class="room-title">Suite Royale</div>
+                <div class="room-price-tag">À partir de 95.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=800&q=80" alt="Chambre Cosy">
+            <div class="room-details">
+                <span class="room-category">Confort</span>
+                <div class="room-title">Chambre Zen</div>
+                <div class="room-price-tag">À partir de 35.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Suite Executive">
+            <div class="room-details">
+                <span class="room-category">Affaires</span>
+                <div class="room-title">Suite Executive</div>
+                <div class="room-price-tag">À partir de 65.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80" alt="Chambre Jardin">
+            <div class="room-details">
+                <span class="room-category">Nature</span>
+                <div class="room-title">Pavillon Jardin</div>
+                <div class="room-price-tag">À partir de 50.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+        <div class="room-item">
+            <img src="https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&w=800&q=80" alt="Chambre Famille">
+            <div class="room-details">
+                <span class="room-category">Famille</span>
+                <div class="room-title">Suite Familiale</div>
+                <div class="room-price-tag">À partir de 80.000 FCFA</div>
+                <div class="room-action"><a href="reservation.html" class="btn-primary">Sélectionner</a></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer" style="background: #111; color: white; padding: 60px 8%; text-align: center;">
+        <div class="logo" style="color: white; margin-bottom: 20px;">AZURE<span>OASIS</span></div>
+        <p style="opacity: 0.5; font-size: 0.8rem;">© 2026 — L'excellence hôtelière à Akpakpa.</p>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

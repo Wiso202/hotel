@@ -1,0 +1,224 @@
+/* -----------------------------------------------------------
+   VARIABLES : Palette "Azure Prestige" (Bleu, Argent, Blanc)
+ 
+  ----------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
+:root {
+    --primary: #0A2351;      /* Bleu Nuit - Luxe et profondeur */
+    --secondary: #788291;    /* Gris Acier - Modernité */
+    --accent: #00A8CC;       /* Bleu Éclatant - Pour les détails */
+    --dark: #050A14;         /* Presque Noir - Texte */
+    --white: #FFFFFF;
+    --bg-color: #F8FAFC;     /* Blanc bleuté très léger */
+    --section-alt: #EDF2F7;  /* Gris clair pour les fonds de section */
+    --shadow-soft: 0 10px 30px rgba(10, 35, 81, 0.05);
+    --shadow-hover: 0 20px 40px rgba(10, 35, 81, 0.12);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* -----------------------------------------------------------
+   BASES
+   ----------------------------------------------------------- */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Outfit', sans-serif;
+}
+
+a { text-decoration: none; transition: var(--transition); }
+section { padding: 100px 8%; }
+
+/* -----------------------------------------------------------
+   NAVIGATION (STYLISÉE AZURE)
+   ----------------------------------------------------------- */
+/* --- NAVBAR FLOATING GLASS --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.8); /* Fond blanc transparent */
+    backdrop-filter: blur(15px); /* Effet de flou "verre" */
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    width: 90%; /* Ne prend pas toute la largeur */
+    max-width: 1200px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centre la barre */
+    z-index: 1000;
+    border-radius: 100px; /* Bords très arrondis */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--primary);
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Petit point sous le lien actif */
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+/* -----------------------------------------------------------
+   BOUTONS (SQUARE LUXURY)
+   ----------------------------------------------------------- */
+.btn-primary {
+    background: var(--primary);
+    color: var(--white) !important;
+    padding: 14px 28px;
+    border-radius: 4px; /* Bords plus droits pour plus de sérieux */
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 168, 204, 0.3);
+}
+
+/* -----------------------------------------------------------
+   CARTES CHAMBRES & SERVICES
+   ----------------------------------------------------------- */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.room-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.room-img-container {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.room-img-container img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.room-price {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 8px 15px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.room-info { padding: 30px; }
+.room-info h3 { color: var(--primary); margin-bottom: 10px; }
+
+/* Services */
+.service-card {
+    text-align: center;
+    padding: 50px 30px;
+    background: var(--white);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.service-card .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+
+/* -----------------------------------------------------------
+   FOOTER (SOMBRE & ÉLÉGANT)
+   ----------------------------------------------------------- */
+.footer {
+    background: var(--dark);
+    color: var(--white);
+    padding: 80px 8% 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 100px;
+    margin-bottom: 50px;
+}
+
+.footer h3 { color: var(--accent); margin-bottom: 15px; }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* -----------------------------------------------------------
+   HERO AJUSTEMENTS
+   ----------------------------------------------------------- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}

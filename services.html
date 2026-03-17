@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expériences | Azure Oasis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Grille de services immersive */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            padding: 0 8% 100px;
+            /* AJOUT DE L'ESPACE ICI */
+            margin-top: 100px; 
+        }
+
+        .service-item {
+            position: relative;
+            height: 550px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s ease;
+        }
+
+        /* Panneau d'information en Glassmorphism */
+        .service-content {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .service-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-item:hover .service-content {
+            background: rgba(10, 35, 81, 0.8); 
+            transform: translateY(-10px);
+        }
+
+        .service-tag {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        @media (max-width: 600px) {
+            .services-grid { 
+                grid-template-columns: 1fr; 
+                padding: 0 5% 60px;
+                margin-top: 50px; /* Espace réduit sur mobile */
+            }
+            .service-item { height: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AZURE<span>OASIS</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="chambres.html">Suites</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="reservation.html" class="btn-primary" style="border-radius: 50px;">Réserver</a>
+    </nav>
+
+    <header class="rooms-header" style="
+    position: relative;
+    height: 70vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;
+    background-attachment: fixed;
+    padding-top: 100px;
+">
+    <div class="content animate__animated animate__fadeIn">
+        <span style="letter-spacing: 8px; text-transform: uppercase; font-size: 0.8rem; font-weight: 300; display: block; margin-bottom: 20px;">L'art de vivre</span>
+        <h1 style="font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; letter-spacing: -2px; line-height: 1.1;">Nos Services <span style="color: var(--accent);">Exclusifs</span></h1>
+        <p style="max-width: 600px; margin: 25px auto 0; font-size: 1.1rem; opacity: 0.9; font-weight: 300;">Un sanctuaire de silence et de lumière à Cotonou.</p>
+    </div>
+</header>
+
+    <main class="services-grid">
+        
+        <div class="service-item">
+            <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Spa & Bien-être">
+            <div class="service-content">
+                <span class="service-tag">Sérénité</span>
+                <div class="service-title">Spa & Bien-être</div>
+                <p class="service-desc">Libérez les tensions avec nos soins signature et massages aux huiles essentielles, dans un cadre dédié à la déconnexion absolue.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Restaurant Gastronomique">
+            <div class="service-content">
+                <span class="service-tag">Saveurs</span>
+                <div class="service-title">Table d'Hôte</div>
+                <p class="service-desc">Une fusion délicate entre gastronomie béninoise et cuisine moderne, servie sous les étoiles ou dans l'intimité de votre suite.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80" alt="Piscine à débordement">
+            <div class="service-content">
+                <span class="service-tag">Fraîcheur</span>
+                <div class="service-title">Piscine Azur</div>
+                <p class="service-desc">Plongez dans les eaux cristallines de notre piscine à débordement, entourée d'un jardin tropical luxuriant.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80" alt="Service Conciergerie">
+            <div class="service-content">
+                <span class="service-tag">Exclusivité</span>
+                <div class="service-title">Conciergerie 24/7</div>
+                <p class="service-desc">De la réservation de vos vols aux excursions personnalisées dans Cotonou, notre équipe anticipe chacun de vos besoins.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer" style="background: #111; color: white; padding: 60px 8%; text-align: center;">
+        <div class="logo" style="color: white; margin-bottom: 20px;">AZURE<span>OASIS</span></div>
+        <p style="opacity: 0.5; font-size: 0.8rem;">L'art de recevoir avec élégance.</p>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -97,15 +97,25 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">AZURE<span>OASIS</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="chambres.html">Suites</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-        <a href="reservation.html" class="btn-primary" style="border-radius: 50px;">Réserver</a>
-    </nav>
+    <div class="logo">AZURE<span>OASIS</span></div>
+    
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="chambres.html">Suites</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <div class="nav-contact nav-btn-desktop">
+        <a href="reservation.html" class="btn btn-primary">Réserver</a>
+    </div>
+</nav>
 
     <header style="
         position: relative; 

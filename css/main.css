@@ -1,8 +1,43 @@
-/* -----------------------------------------------------------
-   ANIMATIONS & EFFETS SPECIFIQUES (main.css)
+/* ===========================================================
+   MAIN CSS - AZURE OASIS (SMART LUXE EDITION)
    ----------------------------------------------------------- */
 
-/* Effet de fondu au survol des liens de navigation */
+/* --- 1. NAVIGATION SMART (GLASSMORPHISM) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar.scrolled {
+    padding: 15px 8%;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-smart);
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition);
+}
+
+/* Effet de fondu au survol des liens */
 .nav-links a::after {
     content: '';
     display: block;
@@ -10,145 +45,209 @@
     height: 2px;
     background: var(--primary);
     transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
 }
 
-.nav-links a:hover::after, .nav-links a.active::after {
+.nav-links a:hover::after, 
+.nav-links a.active::after {
     width: 100%;
 }
 
-/* --- PAGE CHAMBRES : Details & Badges --- */
+/* --- 2. HERO SECTION DYNAMIQUE --- */
+.hero-smart {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 35, 81, 0.7), rgba(10, 35, 81, 0.3));
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 5%;
+}
+
+/* --- 3. PAGE CHAMBRES (SUITES) --- */
 .room-badge {
     display: inline-block;
-    padding: 4px 12px;
-    background: var(--section-alt);
-    color: var(--secondary);
+    padding: 6px 16px;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--accent);
     border-radius: 50px;
     font-size: 0.75rem;
     font-weight: 700;
-    margin-right: 8px;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 .room-features {
     list-style: none;
-    margin: 20px 0;
+    margin: 25px 0;
     padding: 0;
 }
 
 .room-features li {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    color: var(--text-muted);
 }
 
 .room-features li::before {
-    content: '✓';
-    color: var(--primary);
+    content: '✦';
+    color: var(--accent);
     font-weight: bold;
 }
 
-/* --- PAGE SERVICES : Grille Iconographique --- */
+/* --- 4. PAGE SERVICES (GRILLE SMART) --- */
 .service-card {
     background: var(--white);
-    padding: 50px 30px;
-    border-radius: 30px;
+    padding: 60px 40px;
+    border-radius: var(--radius-lg);
     text-align: center;
     border: 1px solid rgba(0,0,0,0.03);
     transition: var(--transition);
+    box-shadow: var(--shadow-smart);
 }
 
 .service-card:hover {
     background: var(--primary);
-    color: var(--white);
+    transform: translateY(-10px);
 }
 
 .service-card .icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
     display: block;
+    transition: var(--transition);
 }
 
+.service-card:hover .icon {
+    transform: scale(1.2);
+}
+
+.service-card:hover h3, 
 .service-card:hover p {
-    color: rgba(255,255,255,0.8);
+    color: white;
 }
 
-/* --- PAGE GALERIE : Style Masonry --- */
+/* --- 5. PAGE GALERIE (MASONRY LUXE) --- */
 .gallery-container {
     columns: 3 300px;
-    column-gap: 20px;
+    column-gap: 25px;
+    padding: 80px 8%;
 }
 
 .gallery-container img {
     width: 100%;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    border-radius: 24px;
+    margin-bottom: 25px;
     transition: var(--transition);
     cursor: zoom-in;
+    box-shadow: var(--shadow-soft);
 }
 
 .gallery-container img:hover {
-    transform: scale(1.03);
-    box-shadow: var(--shadow-hover);
+    transform: scale(1.04);
+    box-shadow: var(--shadow-smart);
 }
 
-/* --- PAGE CONTACT : Map & Infos --- */
+/* --- 6. PAGE CONTACT & MAP --- */
 .map-container {
     width: 100%;
-    height: 450px;
-    border-radius: 30px;
+    height: 480px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    border: 8px solid var(--white);
+    box-shadow: var(--shadow-smart);
+    border: 10px solid var(--white);
 }
 
 .contact-info-card {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 30px;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
     gap: 20px;
+    padding: 20px;
+    background: var(--bg-soft);
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    background: var(--white);
+    box-shadow: var(--shadow-soft);
 }
 
 .contact-item i {
-    width: 50px;
-    height: 50px;
-    background: var(--section-alt);
+    width: 55px;
+    height: 55px;
+    background: var(--primary);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
-/* --- FOOTER : Newsletter Mini --- */
+/* --- 7. FOOTER & NEWSLETTER --- */
 .newsletter-input {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 25px;
 }
 
 .newsletter-input input {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 12px;
-    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 15px 20px;
+    border-radius: 12px;
     color: white;
     flex: 1;
+    outline: none;
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 600px) {
-    .res-grid {
-        grid-template-columns: 1fr;
-    }
+.newsletter-input input:focus {
+    border-color: var(--accent);
+}
+
+/* --- 8. AJUSTEMENTS RESPONSIVE --- */
+@media (max-width: 768px) {
+    .gallery-container { columns: 1; }
     
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero-smart h1 {
+        font-size: 2.8rem;
+    }
+
+    .service-card {
+        padding: 40px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-input {
+        flex-direction: column;
     }
 }

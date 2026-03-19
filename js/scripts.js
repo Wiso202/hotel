@@ -1,27 +1,37 @@
 /**
  * SCRIPTS PRINCIPAUX - Azure Oasis (Luxe & Smart)
+ * Version avec Menu Burger "Trois Tirets" Fonctionnel
  */
 
 document.addEventListener("DOMContentLoaded", () => {
     
     // --- 1. SÉLECTEURS ---
     const navbar = document.querySelector('.navbar');
-    const menuToggle = document.querySelector('#mobile-menu');
-    const navLinks = document.querySelector('#navLinks');
+    const menuToggle = document.querySelector('#mobile-menu'); // Les 3 tirets
+    const navLinks = document.querySelector('#navLinks');     // La liste de liens
 
     // --- 2. GESTION DU MENU MOBILE (BURGER) ---
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Empêche la fermeture immédiate
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('is-active');
         });
 
-        // Fermer le menu si on clique sur un lien (essentiel sur mobile)
+        // Fermer le menu si on clique sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 menuToggle.classList.remove('is-active');
             });
+        });
+
+        // Fermer le menu si on clique n'importe où ailleurs sur l'écran
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('is-active');
+            }
         });
     }
 
@@ -29,14 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
-            // Style dynamique "Smart"
             navbar.style.background = "rgba(255, 255, 255, 0.95)";
             navbar.style.backdropFilter = "blur(10px)";
             navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.08)";
             navbar.style.padding = "15px 8%";
         } else {
             navbar.classList.remove('scrolled');
-            // Retour au style transparent/initial
             navbar.style.background = "rgba(255, 255, 255, 0.1)"; 
             navbar.style.backdropFilter = "blur(5px)";
             navbar.style.padding = "20px 8%";
@@ -49,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // On utilise les classes Animate.css si disponibles, sinon un fondu standard
                 entry.target.style.opacity = "1";
                 entry.target.style.transform = "translateY(0)";
                 entry.target.classList.add('animate__animated', 'animate__fadeInUp');
@@ -58,9 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    // Cibles d'animation
     document.querySelectorAll('.room-item, .service-card, .service-item, .contact-item').forEach(el => {
-        // État initial avant animation
         el.style.opacity = "0";
         el.style.transform = "translateY(30px)";
         el.style.transition = "all 0.8s ease-out";
@@ -73,16 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
         resForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Récupération des données (Assure-toi que les IDs correspondent à ton HTML)
             const checkin = resForm.querySelector('input[type="date"]:first-of-type').value;
             const checkout = resForm.querySelectorAll('input[type="date"]')[1].value;
             const guests = resForm.querySelector('input[type="number"]').value;
             
-            // On récupère le nom de l'hôtel depuis une variable ou le DOM
             const hotelName = "Azure Oasis Cotonou";
-            const whatsappNum = "2290140434120"; // Ton numéro expert
+            const whatsappNum = "2290140434120"; 
 
-            // Construction du message élégant
             const message = `✨ *NOUVELLE RÉSERVATION - ${hotelName}* ✨\n\n` +
                             `📅 *Arrivée :* ${checkin}\n` +
                             `📅 *Départ :* ${checkout}\n` +
@@ -91,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const whatsappUrl = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(message)}`;
 
-            // Feedback visuel avant redirection
             const btn = resForm.querySelector('button');
             btn.innerText = "Ouverture de WhatsApp...";
             btn.style.opacity = "0.7";
@@ -104,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 6. SMOOTH SCROLL (SCROLL FLUIDE) ---
+    // --- 6. SMOOTH SCROLL ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
